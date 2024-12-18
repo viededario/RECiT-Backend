@@ -50,7 +50,7 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 
 
 ## ERD Diagram
-![alt text](image-9.png)
+![alt text](IMG_1295.png)
 
 ## Component Diagram
 ![alt text](IMG_8778.png)
@@ -77,8 +77,8 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 
 | Action | Route                                   | HTTP Verb |
 |--------|----------------------------------------|-----------|
-| Index  | `/user/recommendation`                 | GET       |
-| Show   | `/user/recommendation/:recommendationId` | GET       |
+| Index  | `/user/recommendations`                 | GET       |
+| Show   | `/user/recommendations/:recommendationId` | GET       |
 
 ### My Favorites
 

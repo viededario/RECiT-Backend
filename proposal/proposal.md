@@ -42,7 +42,7 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 
 
 ## ERD Diagram
-![alt text](<images/Screenshot 2024-12-17 at 4.25.30 PM.png>)
+![alt text](<Screenshot 2024-12-17 at 4.25.30 PM.png>)
 
 
 ## Routes

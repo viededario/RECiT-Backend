@@ -44,6 +44,11 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 ## ERD Diagram
 ![alt text](<Screenshot 2024-12-17 at 4.25.30 PM.png>)
 
+## Component Diagram
+
+![Alt text](image-8.png)
+
+
 
 ## Routes
 

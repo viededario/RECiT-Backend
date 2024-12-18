@@ -50,7 +50,7 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 
 
 ## ERD Diagram
-![alt text](IMG_0971.png)
+![alt text](image-9.png)
 
 ## Component Diagram
 ![alt text](IMG_8778.png)

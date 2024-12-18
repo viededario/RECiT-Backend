@@ -31,13 +31,21 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 - AAU: I should be able to see the best and the worst RECs.
 
 ## Wireframe
+### Landing Page:
 ![alt text](image.png)
+### Sign-Up page:
 ![alt text](image-1.png)
+### Sign-In page:
 ![alt text](image-2.png)
+### Dashboard:
 ![alt text](image-3.png)
+### All RECit page:
 ![alt text](image-4.png)
+### RECit Detail:
 ![alt text](image-5.png)
+### My RECit page:
 ![alt text](image-6.png)
+### My Favorite RECit page:
 ![alt text](image-7.png)
 
 

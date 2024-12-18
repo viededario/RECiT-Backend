@@ -78,3 +78,28 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 |--------|--------------------------------------------------------|-----------|
 | Create | `/recommendations/:recommendationId/comments`          | POST      |
 | Delete | `/recommendations/:recommendationId/comments/:commentId` | DELETE    |
+
+### Timeline
+
+| Day           | Tasks                                                                                              |
+|---------------|----------------------------------------------------------------------------------------------------|
+| **Tuesday**   | - Create Proposal                                                                                  |
+| **Wednesday** | - Present Proposal and start backend controllers, services, middleware, and models after approval. |
+|               | - Try to complete.                                                                                 |
+| **Thursday**  | - Finish up backend and ensure the server is running.                                              |
+|               | - Test for any bugs.                                                                               |
+|               | - Start authentication for the front end.                                                         |
+| **Friday**    | - Finish authentication, then start on components:                                                |
+|               |   - Landing page                                                                                   |
+|               |   - Sign up                                                                                       |
+|               |   - Sign in                                                                                       |
+|               |   - Navbar                                                                                        |
+|               |   - Dashboard                                                                                     |
+|               |   - Recommendation form                                                                           |
+|               |   - Recommendation list                                                                           |
+|               |   - Details                                                                                       |
+|               |   - Comment form                                                                                  |
+|               |   - My recommendations                                                                            |
+|               |   - My favorites                                                                                  |
+| **Over Break**| - Test the front end and finish.                                                                   |
+|               | - Work on styling and implementing stretch goals.                                                 |

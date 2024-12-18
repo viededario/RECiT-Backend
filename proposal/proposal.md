@@ -50,38 +50,51 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 
 
 ## ERD Diagram
-![alt text](<Screenshot 2024-12-17 at 4.25.30 PM.png>)
+![alt text](IMG_0971.png)
 
 ## Component Diagram
-
-![Alt text](image-8.png)
-
-
+![alt text](IMG_8778.png)
 
 ## Routes
+
+## Recommendations
+
+### Sign-up
+
+| Action  | Route       | HTTP Verb |
+|---------|-------------|-----------|
+| Index   | `/sign-up`  | GET       |
+| Create  | `/sign-up`  | POST      |
+
+### Sign-in
+
+| Action  | Route           | HTTP Verb |
+|---------|-----------------|-----------|
+| Index   | `/user/sign-in` | GET       |
+| Create  | `/user/sign-in` | POST      |
 
 ### My Recommendations
 
 | Action | Route                                   | HTTP Verb |
 |--------|----------------------------------------|-----------|
-| Index  | `/user/my-recommendations`             | GET       |
-| Show   | `/user/my-recommendations/:recommendationId` | GET       |
+| Index  | `/user/recommendation`                 | GET       |
+| Show   | `/user/recommendation/:recommendationId` | GET       |
 
 ### My Favorites
 
-| Action | Route                                   | HTTP Verb |
-|--------|----------------------------------------|-----------|
-| Index  | `/user/my-favorites`                   | GET       |
-| Show   | `/user/my-favorites/:my-favoritesId`   | GET       |
+| Action | Route                          | HTTP Verb |
+|--------|--------------------------------|-----------|
+| Index  | `/user/favorites`              | GET       |
+| Show   | `/user/favorites/:favoritesId` | GET       |
 
 ### Recommendations
 
 | Action  | Route                                   | HTTP Verb |
 |---------|----------------------------------------|-----------|
 | Index   | `/recommendations`                     | GET       |
-| Create  | `/recommendations/new`                 | POST      |
+| Create  | `/recommendations`                     | POST      |
 | Show    | `/recommendations/:recommendationId`   | GET       |
-| Edit    | `/recommendations/:recommendationId/edit` | GET       |
+| Edit    | `/recommendations/:recommendationId`   | GET       |
 | Update  | `/recommendations/:recommendationId`   | PUT       |
 | Delete  | `/recommendations/:recommendationId`   | DELETE    |
 
@@ -91,6 +104,7 @@ RECiT simplifies the process of finding trusted recommendations while encouragin
 |--------|--------------------------------------------------------|-----------|
 | Create | `/recommendations/:recommendationId/comments`          | POST      |
 | Delete | `/recommendations/:recommendationId/comments/:commentId` | DELETE    |
+
 
 ### Timeline
 

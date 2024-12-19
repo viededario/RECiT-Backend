@@ -10,6 +10,8 @@ import recommendationsRouter from './controllers/recommendations.js';
 
 mongoose.connect(process.env.MONGODB_URI);
 
+let PORT = process.env.PORT
+
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
@@ -22,6 +24,6 @@ app.use('/profiles', profilesRouter);
 app.use('/recommendations', recommendationsRouter)
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('The express app is ready!');
 });

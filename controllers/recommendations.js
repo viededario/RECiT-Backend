@@ -10,8 +10,8 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const recommendations = await Recommendation.find({})
-      .populate("author")
-      .sort({ createdAt: "desc" });
+    .populate("author") 
+    .sort({ createdAt: "desc" });
     res.status(200).json(recommendations);
   } catch (error) {
     res.status(500).json(error);
@@ -42,6 +42,38 @@ router.post("/", verifyToken, async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.post("/:recommendationId/like", verifyToken, async (req, res) => {
+    try {
+        const recommendation = await Recommendation.findById(req.params.recommendationId)
+        if (!recommendation.likes.includes(req.user._id)) {
+            recommendation.likes.push(req.user._id)
+            recommendation.dislikes = recommendation.dislikes.filter((id) => !id.equals(req.user._id))
+            await recommendation.save()
+        } 
+        await recommendation.populate('author')
+        res.status(200).json({ recommendation });
+        
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
+router.post("/:recommendationId/dislike", verifyToken, async (req, res) => {
+    try {
+        const recommendation = await Recommendation.findById(req.params.recommendationId)
+        if (!recommendation.dislikes.includes(req.user._id)) {
+            recommendation.dislikes.push(req.user._id)
+            recommendation.likes = recommendation.likes.filter((id) => !id.equals(req.user._id))
+            await recommendation.save()
+        }
+        await recommendation.populate('author')
+        res.status(200).json({ recommendation });
+        
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
 
 router.put("/:recommendationId", verifyToken, async (req, res) => {
   try {

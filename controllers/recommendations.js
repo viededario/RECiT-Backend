@@ -3,6 +3,7 @@
 import express from "express";
 import verifyToken from "../middleware/verify-token.js";
 import Recommendation from "../models/recommendation.js";
+import User from "../models/user.js";
 const router = express.Router();
 
 // ========== Public Routes ===========
@@ -10,13 +11,51 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const recommendations = await Recommendation.find({})
-      .populate("author")
-      .sort({ createdAt: "desc" });
+    .populate("author") 
+    .sort({ createdAt: "desc" });
     res.status(200).json(recommendations);
   } catch (error) {
     res.status(500).json(error);
   }
 });
+
+// Get the fav from the User's favoriteRec array in RAW JSON format
+router.get('/favorites', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).populate('favoriteRec');
+    res.status(200).json(user.favoriteRec);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// POST a recommendation to the User's favoriteRec array
+router.post('/:recommendationId/favorite', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (user.favoriteRec.includes(req.params.recommendationId)) {
+      return res.status(400).json({ error: "Recommendation already in favorites" });
+    }
+    user.favoriteRec.push(req.params.recommendationId);
+    await user.save();
+    res.status(200).json(user.favoriteRec);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// DELETE a recommendation from the User's favoriteRec array
+router.delete('/:recommendationId/favorite', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    user.favoriteRec = user.favoriteRec.filter((id) => !id.equals(req.params.recommendationId));
+    await user.save();
+    res.status(200).json(user.favoriteRec);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
+);
 
 router.get("/:recommendationId", async (req, res) => {
   try {
@@ -42,6 +81,38 @@ router.post("/", verifyToken, async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.post("/:recommendationId/like", verifyToken, async (req, res) => {
+    try {
+        const recommendation = await Recommendation.findById(req.params.recommendationId)
+        if (!recommendation.likes.includes(req.user._id)) {
+            recommendation.likes.push(req.user._id)
+            recommendation.dislikes = recommendation.dislikes.filter((id) => !id.equals(req.user._id))
+            await recommendation.save()
+        } 
+        await recommendation.populate('author')
+        res.status(200).json({ recommendation });
+        
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
+router.post("/:recommendationId/dislike", verifyToken, async (req, res) => {
+    try {
+        const recommendation = await Recommendation.findById(req.params.recommendationId)
+        if (!recommendation.dislikes.includes(req.user._id)) {
+            recommendation.dislikes.push(req.user._id)
+            recommendation.likes = recommendation.likes.filter((id) => !id.equals(req.user._id))
+            await recommendation.save()
+        }
+        await recommendation.populate('author')
+        res.status(200).json({ recommendation });
+        
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
 
 router.put("/:recommendationId", verifyToken, async (req, res) => {
   try {
@@ -134,7 +205,6 @@ router.delete('/:recommendationId/comments/:commentId', verifyToken, async (req,
     res.status(500).json(err);
   }
 });
-
 
 router.use(verifyToken);
 

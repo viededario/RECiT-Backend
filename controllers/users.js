@@ -4,6 +4,7 @@ const router = express.Router();
 import bcrypt from 'bcrypt';
 import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
+import verifyToken from '../middleware/verify-token.js';
 
 const SALT_LENGTH = 12;
 

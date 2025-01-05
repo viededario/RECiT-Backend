@@ -76,6 +76,7 @@ const recommendationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Recommendation = mongoose.model("Recommendation", recommendationSchema);
 
-export default Recommendation;
+  const Recommendation = mongoose.model("Recommendation", recommendationSchema)
+  
+  export default Recommendation

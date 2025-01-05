@@ -27,5 +27,5 @@ app.use('/recommendations', recommendationsRouter)
 
 
 app.listen(PORT, () => {
-  console.log('The express app is ready!');
+  console.log(`The express app is ready! https://localhost:${PORT}`);
 });
